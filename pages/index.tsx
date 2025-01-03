@@ -1,8 +1,8 @@
-import Head from "next/head";
-import TableComponent from "./comp/TableComponent";
+import { TableComponent, TableHeader, TableRowComponent } from './comp/ExportComponent';
 import { Button } from "@mantine/core";
 import classes from "./index.module.css";
 import { useState } from "react";
+import cx from "clsx";
 
 // Example initial data (dummy data)
 const initialData = [
@@ -15,17 +15,7 @@ const initialData = [
     unitCost: 5.5,
     standardCost: 55,
     items: [], // Empty array for items initially
-  },
-  {
-    categoryId: "CAT003",
-    materialId: "MAT003",
-    description: "Material C",
-    unitOfMeasure: "M",
-    bomQuality: 15,
-    unitCost: 3.7,
-    standardCost: 55.5,
-    items: [], // Empty array for items initially
-  },
+  }
 ];
 
 export default function Home() {
@@ -66,31 +56,46 @@ export default function Home() {
       return category;
     });
   
-    setData(updatedData); // Update the data with the new item added
+    setData(updatedData); 
   };
   
-
   return (
     <>
-      <div>
-        <div className={classes["header-container"]}>
-          <h2 className={classes["header-title"]}>Review BOM</h2>
-          <Button className={classes["contact-support-button"]}>24/7 Contact Support</Button>
+      <div className={classes["root-container"]}>
+        <div className={classes["main-parent-container"]}>
+          <div className={classes["header-container"]}>
+            <h2 className={classes["header-title"]}>Review BOM</h2>
+            <Button className={classes["contact-support-button"]}>24/7 Contact Support</Button>
+          </div>
+  
+          <div className={classes["main-div"]}>
+            <table className={cx(classes.MantineTable)} >
+              <TableHeader />
+              <tbody>
+                
+                {data.map((category, index) => (
+                  <tr key={index}>
+                    <td >
+                      <TableComponent
+                        data={category.items}
+                        categoryId={category.categoryId}
+                        handleAddItem={handleAddItem}
+                      />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+  
+            {/* Add new Category button */}
+            <div className={classes["add-button"]} onClick={handleAddCategory}>
+              + Add new Category
+            </div>
+          </div>
+
+
+
         </div>
-
-        {data.map((category, index) => (
-          <TableComponent
-            key={index}
-            data={category.items} 
-            categoryId={category.categoryId}
-            handleAddItem={handleAddItem} 
-          />
-        ))}
-
-        {/* Add new Category button */}
-        <span className={classes["add-button"]} onClick={handleAddCategory}>
-          + Add new Category
-        </span>
       </div>
     </>
   );

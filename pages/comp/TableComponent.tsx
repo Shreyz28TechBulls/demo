@@ -2,7 +2,6 @@ import React from "react";
 import { ScrollArea, Table } from "@mantine/core";
 import cx from "clsx";
 import classes from "./TableComponent.module.css";
-import TableHeader from "./TableHeader";
 import TableRowComponent from "./TableRowComponent";
 
 type DataItem = {
@@ -29,8 +28,7 @@ export default function TableComponent({
     <div className={classes["parent-container"]}>
       <div className={classes["table-container"]}>
         <ScrollArea h={300}>
-          <Table className={cx(classes.MantineTable)} miw={700}>
-            <TableHeader />
+          <Table className={cx(classes.MantineTable)}>
             <tbody>
               {data.map((row, index) => (
                 <TableRowComponent

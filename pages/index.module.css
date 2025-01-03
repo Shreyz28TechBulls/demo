@@ -5,32 +5,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    /* padding: 20px; */
   }
   
-  /* Content Container (your main content) */
-  .content-container {
-    background-color: white;
-    border: 1px solid black; /* Black border around the content */
-    border-radius: 10px;
-    padding: 20px;
-    max-width: 1200px; /* You can adjust this to control the width of the content */
-    width: 100%;
-  }
   
-  /* Table Styling inside content container */
-  .content-container table {
-    border: 1px solid black; /* Black border for the table */
-    border-collapse: collapse; /* Ensures borders of table cells are merged */
-    width: 100%;
-  }
   
-  /* Table cell borders */
-  .content-container th, .content-container td {
-    border: 1px solid black; /* Border for table cells */
-    padding: 10px;
-    text-align: left;
-  }
+
+
   
   /* Header Container */
   .header-container {
@@ -62,16 +43,188 @@
     background-color: rgba(0, 0, 255, 0.1);
   }
   
-  /* Add Button Styling */
   .add-button {
-    color: rgb(0, 110, 255);
+    background-color: #c9c8c8; /* Slight dark gray background */
+    color: white; /* White text color for contrast */
     font-weight: 500;
-    padding: 13px;
-    border-radius: 8px;
+    padding: 13px 20px; /* Adjusted padding for better appearance */
+    border-radius: 0 0 10px 10px; /* Curvy bottom corners */
     cursor: pointer;
     display: inline-block;
-    text-align: center;
+    text-align: start;
+    color: rgb(6, 6, 229);
     font-size: 1rem;
-    margin-top: 5px;
+    /* margin-top: 5px; */
+    width: 100%;
+    border: none; /* No border */
   }
   
+ 
+
+
+
+
+
+  /* Main Parent Container */
+.main-parent-container {
+  background-color: #e0e2e4;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* Parent Container Styling */
+.parent-container {
+  background-color: white;
+  width: 100%;
+  /* max-width: 1200px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px; */
+  /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); */
+  /* padding: 20px; */
+}
+
+/* Table Container */
+.table-container {
+  width: 100%;
+  overflow: auto;
+}
+
+/* Mantine Table Styling */
+.MantineTable {
+  width: 100%;
+  table-layout: fixed;
+  /* margin: 20px 0; */
+  border-collapse: separate;
+  /* border-spacing: 10px; */
+}
+
+/* Table Header Styling */
+.header {
+  background-color: transparent;
+  font-weight: bold;
+  color: #333;
+  border-bottom: 2px solid #ddd;
+}
+
+.header th {
+  padding: 10px;
+  text-align: left;
+  border: none;
+  white-space: nowrap;
+}
+
+/* Table Cell Styling */
+.MantineTable td, .MantineTable th {
+  padding: 10px;
+  text-align: left;
+  border: none;
+}
+
+.MantineTable td {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 12px;
+}
+
+/* Table Body and Header Styling */
+.MantineTable tbody {
+  display: block;
+}
+
+.MantineTable thead {
+  display: block;
+  width: 100%;
+}
+
+.MantineTable tbody tr {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+}
+
+/* Column Width Adjustments */
+.MantineTable th:nth-child(1), .MantineTable td:nth-child(1) {
+  width: 10%;
+}
+
+.MantineTable th:nth-child(2), .MantineTable td:nth-child(2) {
+  width: 10%;
+}
+
+.MantineTable th:nth-child(3), .MantineTable td:nth-child(3) {
+  width: 20%;
+}
+
+.MantineTable th:nth-child(4), .MantineTable td:nth-child(4) {
+  width: 10%;
+}
+
+.MantineTable th:nth-child(5), .MantineTable td:nth-child(5) {
+  width: 10%;
+}
+
+.MantineTable th:nth-child(6), .MantineTable td:nth-child(6) {
+  width: 10%;
+}
+
+.MantineTable th:nth-child(7), .MantineTable td:nth-child(7) {
+  width: 20%;
+}
+
+.MantineTable th:nth-child(8), .MantineTable td:nth-child(8) {
+  width: 1%;
+}
+
+.MantineTable tr:last-child {
+  border-bottom: 2px solid #ddd;
+}
+
+/* Add Item Text Section */
+.add-item-text {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  display: block;
+}
+
+/* Underline Container below Add Item Text */
+.underline-container {
+  width: 100%;
+  height: 40px;
+  background-color: #e2e8f0; /* Slate-200 color */
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* Category Totals Styling */
+.category-totals-text {
+  font-size: 1.3rem; /* Slightly increased size */
+  font-weight: bold; /* Bold */
+  color: #333;
+  padding-left: 20px; /* Left padding */
+  font-style: italic;
+}
+
+/* Main Div Styling */
+.main-div {
+  background-color: white; /* Set background color to white */
+  border-radius: 10px; /* Optional: If you want rounded corners */
+}
+.root-container {
+  height: 100vh;
+  background-color: #e0e2e4; /* Gray background color */
+  display: flex;
+  justify-content: center;  /* Center content horizontally */
+  align-items: center;      /* Center content vertically */
+  padding: 20px;
+}

@@ -1,6 +1,5 @@
 // TableRowComponent.tsx
 import React from "react";
-import classes from "./TableRowComponent.module.css";
 
 type TableRowProps = {
   materialId: string;
