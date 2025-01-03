@@ -1,0 +1,77 @@
+/* Main Container */
+.main-container {
+    height: 100vh;
+    background-color: #e0e2e4; /* Gray background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Content Container (your main content) */
+  .content-container {
+    background-color: white;
+    border: 1px solid black; /* Black border around the content */
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 1200px; /* You can adjust this to control the width of the content */
+    width: 100%;
+  }
+  
+  /* Table Styling inside content container */
+  .content-container table {
+    border: 1px solid black; /* Black border for the table */
+    border-collapse: collapse; /* Ensures borders of table cells are merged */
+    width: 100%;
+  }
+  
+  /* Table cell borders */
+  .content-container th, .content-container td {
+    border: 1px solid black; /* Border for table cells */
+    padding: 10px;
+    text-align: left;
+  }
+  
+  /* Header Container */
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Header Title Styling */
+  .header-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+  }
+  
+  /* Button Styling */
+  .contact-support-button {
+    color: blue;
+    border: 1px solid blue;
+    background-color: white;
+    font-weight: 500;
+    padding: 13px;
+    border-radius: 8px;
+  }
+  
+  .contact-support-button:hover {
+    background-color: rgba(0, 0, 255, 0.1);
+  }
+  
+  /* Add Button Styling */
+  .add-button {
+    color: rgb(0, 110, 255);
+    font-weight: 500;
+    padding: 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 5px;
+  }
+  
