@@ -1,4 +1,4 @@
-import { TableComponent, TableHeader, TableRowComponent } from './comp/ExportComponent';
+import { DialogBox, TableComponent, TableHeader } from './comp/ExportComponent';
 import { Button } from "@mantine/core";
 import classes from "./index.module.css";
 import { useState } from "react";
@@ -20,13 +20,22 @@ const initialData = [
 
 export default function Home() {
   const [data, setData] = useState(initialData); // Managing dynamic data for table
+  const [modalOpened, setModalOpened] = useState(false); // Modal visibility state
 
   // Function to handle adding a new category
   const handleAddCategory = () => {
+    setModalOpened(true); // Open the modal when the button is clicked
+  };
+
+  const handleModalClose = () => {
+    setModalOpened(false); // Close the modal
+  };
+
+  const handleSaveCategory = (categoryName: string) => {
     const newCategory = {
       categoryId: `CAT00${data.length + 1}`,
       materialId: `MAT00${data.length + 1}`,
-      description: `Material ${data.length + 1}`,
+      description: categoryName || `Material ${data.length + 1}`,
       unitOfMeasure: "KG",
       bomQuality: 5,
       unitCost: 5.5,
@@ -34,6 +43,7 @@ export default function Home() {
       items: [], // Empty array for items
     };
     setData([...data, newCategory]); // Add new category to the data
+    setModalOpened(false); // Close the modal after adding
   };
 
   const handleAddItem = (categoryId: string) => {
@@ -69,13 +79,12 @@ export default function Home() {
           </div>
   
           <div className={classes["main-div"]}>
-            <table className={cx(classes.MantineTable)} >
+            <table className={cx(classes.MantineTable)}>
               <TableHeader />
               <tbody>
-                
                 {data.map((category, index) => (
                   <tr key={index}>
-                    <td >
+                    <td>
                       <TableComponent
                         data={category.items}
                         categoryId={category.categoryId}
@@ -93,8 +102,13 @@ export default function Home() {
             </div>
           </div>
 
-
-
+          {/* Modal Dialog Box */}
+          {modalOpened && (
+            <DialogBox
+              onAdd={handleSaveCategory} // Callback for saving the category
+              onClose={handleModalClose} // Callback for closing the modal
+            />
+          )}
         </div>
       </div>
     </>
