@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Table, ScrollArea } from '@mantine/core';
 import classes from './TableComponent.module.css';
+import { MaterialDescEditableComponent } from './MaterialDescEditAbleComponet';
 
 interface RowData {
   categoryId: string;
@@ -60,29 +61,6 @@ const data: RowData[] = [
   },
 ];
 
-const EditableMaterialDesc = ({
-  id,
-  value,
-  isEditable,
-  onChange,
-}: {
-  id: string;
-  value: string;
-  isEditable: boolean;
-  onChange: (id: string, value: string) => void;
-}) => {
-  return isEditable ? (
-    <input
-      type="text"
-      value={value}
-      onChange={(e) => onChange(id, e.target.value)}
-      className={classes.materialInputEditable}
-    />
-  ) : (
-    <span className={classes.materialInputNonEditable}>{value}</span>
-  );
-};
-
 export function TableComponent() {
   const [editableRow, setEditableRow] = useState<string | null>(null);
   const [editedData, setEditedData] = useState<RowData[]>(data);
@@ -123,7 +101,7 @@ export function TableComponent() {
               <td>{row.categoryId}</td>
               <td>{row.materialId}</td>
               <td>
-                <EditableMaterialDesc
+                <MaterialDescEditableComponent
                   id={row.materialId}
                   value={row.materialDesc}
                   isEditable={editableRow === row.materialId}
