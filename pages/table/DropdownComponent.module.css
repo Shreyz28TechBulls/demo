@@ -1,0 +1,22 @@
+.dropdown {
+    max-height: 200px; /* Restrict dropdown height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    background-color: #d3d3d3; /* Grey background */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    position: absolute;
+    top: 100%; /* Position it right below the input */
+    z-index: 10;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dropdownItem {
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .dropdownItem:hover {
+    background-color: #b0b0b0; /* Darker grey on hover */
+  }
+  
