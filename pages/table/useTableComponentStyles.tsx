@@ -121,9 +121,9 @@ const useTableComponentStyles = createStyles((theme) => ({
   // Input field
   inputBox: {
     flex: 1, // Allow the input to grow but stay within parent bounds
-    minWidth: '120px',
+    minWidth: '40px',
     maxWidth: '100%', // Prevent the input from exceeding the parent's width
-    padding: '6px 8px',
+    padding: '6px 1px',
     border: '1px solid #ccc',
     outline: 'none',
     fontSize: '14px',

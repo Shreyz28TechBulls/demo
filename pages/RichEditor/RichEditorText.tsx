@@ -50,6 +50,9 @@ const RichEditorText: React.FC = () => {
     setDropdownTag(null); // Close the dropdown
   };
 
+  // Calculate dynamic input width based on text length
+  const inputWidth = `${Math.max(inputText.length, 1) * 8}px`; // Minimum width of 1 character, increase with text length
+
   return (
     <div>
       {/* Rich Text Editor */}
@@ -87,6 +90,7 @@ const RichEditorText: React.FC = () => {
               onChange={handleInputChange}
               onKeyDown={handleKeyPress}
               className={classes.inputBox}
+              style={{ width: inputWidth }} // Dynamically set the width based on input text length
             />
             {/* Preview span */}
             {inputText && (
