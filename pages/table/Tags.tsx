@@ -1,5 +1,5 @@
-import React from 'react';
-import useTableComponentStyles from './useTableComponentStyles';
+import React from "react";
+import useTableComponentStyles from "./useTableComponentStyles";
 
 interface TagsProps {
   label: string;
@@ -11,13 +11,9 @@ const Tags: React.FC<TagsProps> = ({ label, onRemove }) => {
 
   return (
     <div className={classes.tag}>
-      <span className={classes.tagLabel}>{label}</span>
-      <button
-        className={classes.removeButton}
-        onClick={() => onRemove(label)}
-        aria-label={`Remove tag ${label}`}
-      >
-        &times;
+      <span>{label}</span>
+      <button onClick={() => onRemove(label)} className={classes.dropdownButton}>
+        
       </button>
     </div>
   );
