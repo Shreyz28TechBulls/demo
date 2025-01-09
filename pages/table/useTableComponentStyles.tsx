@@ -65,30 +65,34 @@ const useTableComponentStyles = createStyles((theme) => ({
     '&:hover': {
       color: theme.colors.blue[6],
     },
+    // Rotate the icon when dropdown is open
+    '&.dropdown-open': {
+      transform: 'rotate(180deg)',
+    },
   },
 
   dropdown: {
     position: 'absolute',
     top: 'calc(100% + 4px)',
     left: 0,
-    background: '#f7f7f7',
+    background: '#fff',
     border: '1px solid #ccc',
-    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
     borderRadius: '4px',
     zIndex: 1000,
     padding: '4px 0',
-    maxHeight: '200px',
+    maxHeight: '200px', // Fixed height for dropdown
+    minWidth: '150px', // Minimum width of dropdown
+    maxWidth: '100%', // Max width will be the parent container's width
     overflowY: 'auto',
+    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
   },
-
   dropdownItem: {
     padding: '8px 12px',
     fontSize: '14px',
     cursor: 'pointer',
     color: '#333',
-    backgroundColor: '#f7f7f7',
     '&:hover': {
-      backgroundColor: '#e0e0e0',
+      backgroundColor: '#f0f0f0',
     },
   },
 
@@ -137,15 +141,26 @@ const useTableComponentStyles = createStyles((theme) => ({
     flexWrap: 'wrap', // Wrap content to the next line
   },
 
-  // Preview span
+  // previewSpan: {
+  //   fontSize: '14px',
+  //   color: '#aaa', // Light gray color for the preview text
+  //   pointerEvents: 'none', // Disable interaction with the preview
+  //   whiteSpace: 'nowrap', // Prevent wrapping of the preview text
+  //   position: 'absolute',
+  //   top: '0',
+  //   left: '0',
+  // },
   previewSpan: {
-    position: 'absolute',
-    top: '0',
-    left: '0',
+    position: 'absolute', // Position it absolutely inside the input container
+    top: '50%', // Vertically align the preview to the center of the input
+    left: '100%', // Place the preview span right after the input field
+    transform: 'translateY(-50%)', // Adjust to center vertically
     fontSize: '14px',
     color: '#aaa', // Light gray color for the preview text
     pointerEvents: 'none', // Disable interaction with the preview
     whiteSpace: 'nowrap', // Prevent wrapping of the preview text
+    minWidth: '40px', // Set a minimum width for the preview span
+    maxWidth: '100%', // Make the preview span as wide as the available space
   },
 }));
 
