@@ -1,39 +1,21 @@
-import React, { useState } from "react";
-import { Table, ScrollArea } from "@mantine/core";
-import useTableComponentStyles from "./useTableComponentStyles"; // Import the Mantine styles
-import TagsHorizontalScrollableInputField from "./TagsHorizontalScrollableInputField";
+import React, { useState } from 'react';
+import { Table, ScrollArea } from '@mantine/core';
+import useTableComponentStyles from './useTableComponentStyles';
+import RichEditorText from '../RichEditor/RichEditorText';
 
-interface RowData {
-  categoryId: string;
-  materialId: string;
-  materialDesc: string;
-  unitOfMeasure: string;
-  bomQty: number;
-  unitCost: number;
-  standardCost: number;
-}
-
-const data: RowData[] = [
+const data = [
   { categoryId: "C001", materialId: "M001", materialDesc: "Material 1", unitOfMeasure: "kg", bomQty: 10, unitCost: 15.5, standardCost: 155.0 },
   { categoryId: "C002", materialId: "M002", materialDesc: "Material 2", unitOfMeasure: "ltr", bomQty: 20, unitCost: 10.0, standardCost: 200.0 },
-  { categoryId: "C003", materialId: "M003", materialDesc: "Material 3", unitOfMeasure: "pcs", bomQty: 5, unitCost: 25.0, standardCost: 125.0 },
-  { categoryId: "C004", materialId: "M004", materialDesc: "Material 4", unitOfMeasure: "kg", bomQty: 15, unitCost: 12.5, standardCost: 187.5 },
-  { categoryId: "C005", materialId: "M005", materialDesc: "Material 5", unitOfMeasure: "ltr", bomQty: 8, unitCost: 20.0, standardCost: 160.0 },
+  // Add more rows as necessary
 ];
 
 export function TableComponent() {
-  const { classes } = useTableComponentStyles(); // Use Mantine styles
+  const { classes } = useTableComponentStyles();
   const [editableRow, setEditableRow] = useState<string | null>(null);
-  const [editedData, setEditedData] = useState<RowData[]>(data);
-  const [tags, setTags] = useState<string[]>([]);
+  const [editedData, setEditedData] = useState(data);
 
   const handleEdit = (id: string) => {
     setEditableRow(id);
-  };
-
-  const handleTagsChange = (newTags: string[]) => {
-    setTags(newTags);
-    console.log("Updated Tags:", newTags); // Debugging to verify tag updates
   };
 
   return (
@@ -53,15 +35,12 @@ export function TableComponent() {
         </thead>
         <tbody>
           {editedData.map((row) => (
-            <tr
-              key={row.materialId}
-              className={editableRow === row.materialId ? classes.editableRow : ""}
-            >
+            <tr key={row.materialId} className={editableRow === row.materialId ? classes.editableRow : ""}>
               <td>{row.categoryId}</td>
               <td>{row.materialId}</td>
               <td>
                 {editableRow === row.materialId ? (
-                    <TagsHorizontalScrollableInputField onTagsChange={handleTagsChange} />
+                  <RichEditorText />  
                 ) : (
                   row.materialDesc
                 )}
