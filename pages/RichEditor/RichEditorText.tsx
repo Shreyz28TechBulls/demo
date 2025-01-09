@@ -1,69 +1,65 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { RichTextEditor } from '@mantine/tiptap';
 import useTableComponentStyles from '../table/useTableComponentStyles';
 
 const RichEditorText: React.FC = () => {
-  const [tags, setTags] = useState<string[]>([]); // To store tags
-  const [inputText, setInputText] = useState(''); // To store input text
-  const [inputWidth, setInputWidth] = useState(0); // To track input width for dynamic adjustments
+  const [tags, setTags] = useState<string[]>([]); // To store the list of tags
+  const [inputText, setInputText] = useState(''); // Text typed in the input field
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const editor = useEditor({
     extensions: [StarterKit],
-    content: '', // Start with empty content
+    content: '', // Initial empty content for RichTextEditor
   });
 
   const { classes } = useTableComponentStyles();
 
-  // Dynamically adjust the width of the input field based on input text
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value);
-    setInputWidth(e.target.scrollWidth); // Update width based on scrollWidth
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && inputText.trim() !== '') {
-      // Concatenate the input text with existing text and clear the input field
-      setTags([...tags, inputText.trim()]);
-      setInputText(''); // Reset input field
+      const newTags = [...tags, inputText.trim()];
+      setTags(newTags);
+      setInputText(''); // Clear input field after pressing Enter
+
+      // Add the new tag to the RichTextEditor content
+      editor?.commands.insertContent(`<span class="tag">${inputText.trim()}</span>&nbsp;`);
     }
   };
 
   return (
-    <div className={classes.tagInputContainer}>
-      <div className={classes.inputWrapper}>
-        {/* Mantine RichTextEditor */}
-        <RichTextEditor editor={editor}>
-          <RichTextEditor.Content />
-        </RichTextEditor>
+    <div>
+      {/* Rich Text Editor */}
+      <RichTextEditor editor={editor}>
 
-        {/* Tags List */}
-        <div className={classes.tags}>
-          {tags.map((tag, index) => (
-            <div key={index} className={classes.tag}>
-              <span>{tag}</span>
-            </div>
-          ))}
-        </div>
+        {/* Tags and Input Field */}
+        <div className={classes.tagInputContainer}>
+          {/* Tags List */}
+          <div className={classes.tags}>
+            {tags.map((tag, index) => (
+              <div key={index} className={classes.tag}>
+                <span>{tag}</span>
+              </div>
+            ))}
+          </div>
 
-        {/* Input field with preview span */}
-        <div className={classes.inputContainer}>
+          {/* Input field */}
           <input
             type="text"
             value={inputText}
             onChange={handleInputChange}
             onKeyDown={handleKeyPress}
+            ref={inputRef}
             className={classes.inputBox}
-            placeholder="Type your tag"
-            style={{ width: inputWidth }} // Dynamically adjust width
+            placeholder="Type and press Enter"
+            style={{ marginLeft: tags.length * 2 + 'px' }} // Dynamically shift the input field
           />
-          {/* Preview Span */}
-          <span className={classes.previewSpan} style={{ width: inputWidth }}>
-            {inputText}
-          </span>
         </div>
-      </div>
+      </RichTextEditor>
     </div>
   );
 };

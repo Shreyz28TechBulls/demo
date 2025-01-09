@@ -90,7 +90,7 @@ const TagsHorizontalScrollableInputField: React.FC<TagInputProps> = ({ onTagsCha
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={handleKeyDown}
-        className={classes.input}
+        className={classes.inputBox}
         ref={inputRef}
       />
     </div>

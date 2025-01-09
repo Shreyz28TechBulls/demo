@@ -1,6 +1,7 @@
 import { createStyles } from '@mantine/core';
 
 const useTableComponentStyles = createStyles((theme) => ({
+  // Table Styles
   table: {
     borderCollapse: 'collapse',
     width: '100%',
@@ -25,6 +26,7 @@ const useTableComponentStyles = createStyles((theme) => ({
     },
   },
 
+  // Editable row styles
   editableRow: {
     backgroundColor: theme.colors.blue[0],
   },
@@ -38,6 +40,7 @@ const useTableComponentStyles = createStyles((theme) => ({
     },
   },
 
+  // Tag styles
   tag: {
     display: 'flex',
     alignItems: 'center',
@@ -50,6 +53,7 @@ const useTableComponentStyles = createStyles((theme) => ({
     whiteSpace: 'nowrap',
   },
 
+  // Dropdown styles
   dropdownButton: {
     marginLeft: '8px',
     padding: '0',
@@ -61,43 +65,6 @@ const useTableComponentStyles = createStyles((theme) => ({
     '&:hover': {
       color: theme.colors.blue[6],
     },
-  },
-
-  tagInputContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-    gap: '8px',
-    padding: '8px',
-    border: '2px solid #FFBF00',
-    borderRadius: '4px',
-    maxWidth: '600px',
-  },
-
-  tags: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '8px',
-  },
-
-  input: {
-    flex: 1,
-    minWidth: '120px',
-    padding: '6px 8px',
-    border: 'none',
-    outline: 'none',
-    fontSize: '14px',
-    backgroundColor: 'transparent',
-    transition: 'border-color 0.2s ease-in-out',
-    '&:focus': {
-      borderColor: '#FFD700',
-    },
-  },
-
-  inputWrapper: {
-    display: 'flex',
-    alignItems: 'center',
-    position: 'relative',
   },
 
   dropdown: {
@@ -125,31 +92,60 @@ const useTableComponentStyles = createStyles((theme) => ({
     },
   },
 
-  // New styles for input field and preview span
-  inputBox: {
-    flex: 1,
-    padding: '6px 8px',
-    fontSize: '14px',
-    border: '1px solid #ccc',
-    outline: 'none',
-    backgroundColor: 'transparent',
+  // Input and tags container
+  tagInputContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    flexWrap: 'wrap', // Allow wrapping to the next line
+    gap: '8px',
+    padding: '8px',
+    border: '2px solid #FFBF00',
+    borderRadius: '4px',
+    maxWidth: '600px', // Fixed max width for the container
+    width: '100%',
+    overflow: 'hidden', // Prevent overflow in x-axis
+    wordBreak: 'break-word', // Break long words if necessary
   },
 
+  // Tags wrapper
+  tags: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '8px',
+  },
+
+  // Input field
+  inputBox: {
+    flex: 1, // Allow the input to grow but stay within parent bounds
+    minWidth: '120px',
+    maxWidth: '100%', // Prevent the input from exceeding the parent's width
+    padding: '6px 8px',
+    border: '1px solid #ccc',
+    outline: 'none',
+    fontSize: '14px',
+    backgroundColor: 'transparent',
+    boxSizing: 'border-box', // Include padding in width calculations
+    wordBreak: 'break-word', // Break long text properly
+  },
+
+  // Input wrapper for input and preview span
   inputContainer: {
     display: 'flex',
     alignItems: 'center',
     position: 'relative',
     gap: '8px',
+    flexWrap: 'wrap', // Wrap content to the next line
   },
 
+  // Preview span
   previewSpan: {
     position: 'absolute',
     top: '0',
     left: '0',
     fontSize: '14px',
-    color: '#aaa', // Light gray color for preview
-    pointerEvents: 'none', // Make sure it doesn’t interfere with typing
-    whiteSpace: 'nowrap', // Prevent wrapping
+    color: '#aaa', // Light gray color for the preview text
+    pointerEvents: 'none', // Disable interaction with the preview
+    whiteSpace: 'nowrap', // Prevent wrapping of the preview text
   },
 }));
 
