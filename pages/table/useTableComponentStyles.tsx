@@ -70,15 +70,14 @@ const useTableComponentStyles = createStyles((theme) => ({
       transform: 'rotate(180deg)',
     },
   },
-
   dropdown: {
-    position: 'absolute',
-    top: 'calc(100% + 4px)',
+    position: 'absolute', // Ensure the dropdown is positioned absolutely
+    top: 'calc(100% + 4px)', // Position it just below the tag
     left: 0,
     background: '#fff',
     border: '1px solid #ccc',
     borderRadius: '4px',
-    zIndex: 1000,
+    zIndex: 1000, // Ensure it is above other elements
     padding: '4px 0',
     maxHeight: '200px', // Fixed height for dropdown
     minWidth: '150px', // Minimum width of dropdown
@@ -86,6 +85,7 @@ const useTableComponentStyles = createStyles((theme) => ({
     overflowY: 'auto',
     boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
   },
+  
   dropdownItem: {
     padding: '8px 12px',
     fontSize: '14px',
@@ -107,9 +107,11 @@ const useTableComponentStyles = createStyles((theme) => ({
     borderRadius: '4px',
     maxWidth: '600px', // Fixed max width for the container
     width: '100%',
-    overflow: 'hidden', // Prevent overflow in x-axis
+    overflow: 'visible', // Allow dropdown to be visible
     wordBreak: 'break-word', // Break long words if necessary
+    position: 'relative', // Ensure the dropdown is positioned relative to this container
   },
+  
 
   // Tags wrapper
   tags: {

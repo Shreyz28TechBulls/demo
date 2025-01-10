@@ -26,7 +26,7 @@ const RichEditorText: React.FC = () => {
     setInputText(e.target.value);
   };
 
-  // Handle Enter key press
+  // Handle key press (Enter and Backspace)
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && inputText.trim() !== '') {
       const newTags = [...tags, inputText.trim()];
@@ -35,6 +35,18 @@ const RichEditorText: React.FC = () => {
 
       // Add the new tag to the RichTextEditor content
       editor?.commands.insertContent(`<span class="tag">${inputText.trim()}</span>&nbsp;`);
+    } else if (e.key === 'Backspace' && inputText === '') {
+      // Remove the last tag if backspace is pressed and input is empty
+      const updatedTags = [...tags];
+      const removedTag = updatedTags.pop(); // Remove the last tag
+      setTags(updatedTags);
+
+      // Remove the last tag from the RichTextEditor content
+      if (removedTag) {
+        const content = editor?.getHTML() || '';
+        const newContent = content.replace(`<span class="tag">${removedTag}</span>&nbsp;`, '');
+        editor?.commands.setContent(newContent); // Update editor content
+      }
     }
   };
 
